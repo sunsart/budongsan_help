@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title class="font">부동산 도우미</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/footer.css">
+	<link rel="stylesheet" href="/css/dropdown.css">
+	<script src="/js/dropdown.js"></script>
+	<link rel="stylesheet" href="/css/signup.css">
+	<script src="/js/signup.js"></script>
+	<link rel="stylesheet" href="/css/login.css">
+	<script src="/js/login.js"></script>
+	<link rel="stylesheet" href="/css/findid.css">
+	<script src="/js/findid.js"></script>
+	<link rel="stylesheet" href="/css/findpw.css">
+	<script src="/js/findpw.js"></script>
+	<link rel="stylesheet" href="/css/editpw.css">
+	<script src="/js/editpw.js"></script>
+	<link rel="stylesheet" href="/css/table.css">
+	<script src="/js/table.js"></script>
+	<link rel="stylesheet" href="/css/modal.css">
+	<script src="/js/modal.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+		.font {font-family: 'Noto Sans KR', sans-serif;}
+	</style>
+</head>
+<body>
+
+<!-- 로그인 팝업 -->
+<div class="background_login">
+	<div class="window_login">
+		<div class="popup_login">
+			<div class="container_login">
+						
+				<label class="font" for="log_id">아이디</label>
+				<input type="text" id="log_id" name="login_id" autocomplete="on">
+			
+				<label class="font" for="log_pw">비밀번호</label>
+				<input type="password" id="log_pw" name="login_pw">
+			
+				<button type="button" class="login_btn" onclick="Login();">로그인</button>
+			</div>
+			<div class="container_login" style="background-color:#f1f1f1">
+				<button type="button" class="login_btn" onclick="closeLogin();">취소</button>
+				<a class="find font" href="#" onclick="showFindpw();">비밀번호찾기</a>
+				<a class="find font" href="#" onclick="showFindId();">아이디찾기</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 회원가입 팝업 -->
+<div class="background_signup">
+	<div class="window_signup">
+		<div class="popup_signup">
+			<div class="container_signup">
+
+				<label class="font" for="mem_id" style="display:block;">아이디</label>
+				<input type="text" id="mem_id" style="display:inline;">
+
+				<label class="font" for="mem_pw1" style="display:block;">비밀번호</label>
+				<input type="password" id="mem_pw1" style="display:inline;">
+
+				<label class="font" for="mem_pw2" style="display:block;">비밀번호 재입력</label>
+				<input type="password" id="mem_pw2" style="display:inline;">
+
+				<label class="font" for="mem_email" style="display:block;">이메일</label>
+				<input type="text" class="font" id="mem_email" placeholder="비밀번호 분실시 사용됩니다" style="display:inline;">
+
+				<br><br>
+				<textarea id="terms" style="height:150px; font-size:13px;" readonly></textarea>
+				<input type="checkbox" id="terms_check" style="margin-top:-20px;">
+				<label class="font" for="terms_check" style="margin-top:-20px;">약관 내용에 동의합니다</label><br><br>
+
+				<button type="button" id="join_btn" class="signup_btn" onclick="checkSignup();">회원가입</button>
+			</div>
+			<div class="container_signup" style="background-color:#f1f1f1">
+				<button type="button" id="close_signup" class="signup_btn" onclick="closeSignup();">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 아이디 찾기 팝업 -->
+<div class="background_findId">
+	<div class="window_findId">
+		<div class="popup_findID">
+			<div class="container_findId">
+
+				<label class="font" for="findId_email">회원가입시 작성한 이메일주소를 입력해주세요</label>
+				<input type="text" id="findId_email">
+
+				<button type="button" class="findId_btn" onclick="findId();">아이디찾기</button>
+			</div>
+			<div class="container_findId" style="background-color:#f1f1f1">
+				<button type="button" class="findId_btn" onclick="closeFindId();">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 비밀번호 찾기 팝업 -->
+<div class="background_findpw">
+	<div class="window_findpw">
+		<div class="popup_findpw">
+			<div class="container_findpw">
+
+				<label class="font" for="findpw_name">아이디</label>
+				<input type="text" id="findpw_name">
+
+				<label class="font" for="findpw_email">회원가입시 작성한 이메일주소를 입력해주세요</label>
+				<input type="text" id="findpw_email">
+
+				<button type="button" class="findpw_btn" onclick="findpw();">비밀번호찾기</button>
+			</div>
+			<div class="container_findpw" style="background-color:#f1f1f1">
+				<button type="button" class="findpw_btn" onclick="closeFindpw();">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 비밀번호 수정 팝업 -->
+<div class="background_editpw">
+	<div class="window_editpw">
+		<div class="popup_editpw">
+			<div class="container_editpw">
+
+				<div id="confirm_code" style="display:block;">
+					<label class="font" for="sixcode">비밀번호 변경을 위해 이메일로 전송된 6자리 코드번호를 입력하세요</label>
+					<input type="text" id="sixcode">
+					<button type="button" class="sixcode_confirm_btn" onclick="confirmCode();">확인</button>
+					<button type="button" class="sixcode_calcel_btn" onclick="closeEditpw();">취소</button>
+				</div>
+
+				<div id="change_password" style="display:none;">
+					<label class="font" for="to_pw1">변경할 비밀번호</label>
+					<input type="password" id="to_pw1">
+					<label class="font" for="to_pw2">비밀번호 재입력</label>
+					<input type="password" id="to_pw2">
+					<button type="button" class="editpw_btn" onclick="changePw();">비밀번호 변경</button>
+					<button type="button" class="editpw_btn" onclick="closeEditpw();">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 특약 수정 모달 -->
+<div id="editModal" class="modal font">
+	<div class="modal-content">
+			<input type="hidden" id="contract_no" name="contract_no" value=""><br>
+			<input type="text" class="font" id="edit_title" value="" style="width:20%;border-width:2px;"><br>
+			<input type="text" class="font" id="edit_content" value="" style="border-width:2px;"><br>
+
+			<button type="button" id="modal_conform" onclick="confirmModal();">확인</button>
+			<button type="button" id="modal_cancel" onclick="closeModal();">취소</button>
+			<br>
+	</div>
+</div>
+
+<!--header : 회원가입,로그인-->
+<div class="header font">
+	<h1>부동산 도우미</h1>
+
+	<% if (user) { %>
+		<div id="login_text">
+			<span><%= user.name %> 님, 로그인 되었습니다 </span>
+			<button onclick="location.href='/logout'">로그아웃</button>
+		</div>
+	<% } else { %>
+		<button class="header_btn" onclick="showSignup();">회원가입</button>
+		<button class="header_btn" onclick="showLogin();">로그인</button>
+	<% } %>
+	<br>
+</div>
+
+<!--드롭다운바(계약종류)-->
+<div class="navbar font">
+	<div class="dropdown">
+		<button id="apt" class="dropbtn" onclick="clickMenuBtn(this.id)">아파트</button>
+		<div id="apt-Dropdown" class="dropdown-content">
+			<a href="/type/apt_trade" class="menu">매매</a>
+			<a href="/type/apt_jeonse" class="menu">전세</a>
+			<a href="/type/apt_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="officetel" class="dropbtn" onclick="clickMenuBtn(this.id)">오피스텔</button>
+		<div id="officetel-Dropdown" class="dropdown-content">
+			<a href="/type/officetel_trade" class="menu">매매</a>
+			<a href="/type/officetel_jeonse" class="menu">전세</a>
+			<a href="/type/officetel_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="dasedae" class="dropbtn" onclick="clickMenuBtn(this.id)">다세대주택</button>
+		<div id="dasedae-Dropdown" class="dropdown-content">
+			<a href="/type/dasedae_trade" class="menu">매매</a>
+			<a href="/type/dasedae_jeonse" class="menu">전세</a>
+			<a href="/type/dasedae_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="dagagu" class="dropbtn" onclick="clickMenuBtn(this.id)">다가구주택</button>
+		<div id="dagagu-Dropdown" class="dropdown-content">
+			<a href="/type/dagagu_trade" class="menu">매매</a>
+			<a href="/type/dagagu_jeonse" class="menu">전세</a>
+			<a href="/type/dagagu_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="oneroom" class="dropbtn" onclick="clickMenuBtn(this.id)">원룸</button>
+		<div id="oneroom-Dropdown" class="dropdown-content">
+			<a href="/type/oneroom_jeonse" class="menu">전세</a>
+			<a href="/type/oneroom_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="shop" class="dropbtn" onclick="clickMenuBtn(this.id)" style="color:yellowgreen;">상가</button>
+		<div id="shop-Dropdown" class="dropdown-content">
+			<a href="/type/shop_trade" class="menu">매매</a>
+			<a href="/type/shop_monthly" class="menu">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="factory" class="dropbtn" onclick="clickMenuBtn(this.id)" style="color:yellowgreen;">공장/창고</button>
+		<div id="factory-Dropdown" class="dropdown-content">
+			<a href="/type/factory_trade">매매</a>
+			<a href="/type/factory_monthly">월세</a>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button id="land" class="dropbtn" onclick="clickMenuBtn(this.id)" style="color:yellowgreen;">토지</button>
+		<div id="land-Dropdown" class="dropdown-content">
+			<a href="/type/land_trade">매매</a>
+			<a href="/type/land_monthly">월세</a>
+		</div>
+	</div>
+
+</div>
+
+<!--특약 테이블-->
+<div id="table" class="font">
+	<br>
+	<span class="font" id="content_name"> <%= type %> </span>
+	<% if (user) { %>
+		<button id="edit_button" class="edit_btn" style="visibility:visible;">수정</button>
+	<% } else { %>
+		<button id="edit_button" class="edit_btn" style="visibility:hidden;">수정</button>
+	<% } %>
+
+	<table id="table_content" style="width:100%">
+		<% for(let i=0; i<data.length; i++){ %>
+			<tr style="height:40px">
+				<td id="col_size" style="width:12%">
+					<input type="checkbox" class="checkbox" data-id="<%= data[i].id %>">
+					<label class="title"> <%= data[i].title %></label> 
+					<button id="clause_button" class="clause_btn" data-id="<%= data[i].id %>" onclick="clickEdit(this)">선택</button>
+				</td>
+				<td>
+					<label class="content"> <%= data[i].content %></label> 
+				</td>
+			</tr>
+		<% } %>
+	</table><br>
+
+	<input type="button" id="copyButton" data-clipboard-target="#copyContent" value="복사하기">
+	<span class="font">(위 특약사항을 선택후, 복사하기 버튼을 클릭하시고 계약서 작성 프로그램의 특약사항란에 붙여넣기(Ctrl+V) 하시면 됩니다)</span>
+	<br><br>
+</div>
+
+<!--특약 정리-->
+<div>
+	<form action="/Copy.php">
+		<textarea class="font" id="copyContent" name="message" rows="20" cols="200"></textarea>
+	</form>
+</div>
+
+<!--문의 하기-->
+<footer class="footer">
+	<div class="footerbar">
+		<p class="copyright font">Copyright 2024. All rights reserved. </p>
+	</div>
+	<div class="copyinfo font">
+		<p>현재 경기도에서 공인중개사로 일하고 있습니다.</p>
+		<p>일하면서 필요해서 만든 사이트인데, 다른 중개사분들께 도움이 될까해서 공개합니다.</p>
+		<p>수정할 부분이나 건의할 내용이 있으면 언제든 환영합니다.</p>
+		<p>(계약유형 추가, 기타 도움이 되는 내용들로 계속 업데이트 예정입니다!)</p>
+		<p>문의하기 <a id="email_address">sunsart7@naver.com</a> </p>
+		<br>
+	</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* 취소 버튼 */
+#modal_cancel {
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  margin-left: 15px;
+  background-color: #7a7979;
+  border-radius: 5px;
+}
+#modal_cancel:hover {
+  background-color: #616161;
+}
+
+#edit_title, #edit_content {
+  font-size: 16px;
+}
+
+/* 확인 버튼 */
+#modal_conform {
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  margin-left: 15px;
+  background-color: #31d414;
+  border-radius: 5px;
+}
+#modal_conform:hover {
+  background-color: #2dc513;
+}
+

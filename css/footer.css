@@ -1,0 +1,26 @@
+.footer {
+  background-color: #f1f1f1;
+}
+
+.footerbar {
+  overflow: hidden;
+  background-color: #d8d7d7;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.copyinfo {
+  text-align: center;
+}
+
+.copyinfo p{
+  font-size : 15px;
+  line-height: 100%;
+  color: rgb(105, 105, 105);
+}
+
+#email_address {
+  color: rgb(67, 62, 234);
+}

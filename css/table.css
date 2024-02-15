@@ -1,0 +1,50 @@
+table,th,td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.content {
+  color: darkgray;
+  padding-left: 15px;
+}
+
+#copyContent {
+  font-size: 16px;
+  width: 100%;
+}
+
+#content_name {
+  border: 0px;
+  border-radius: 2px;
+  background-color: #73ec97;
+  padding: 6px;
+}
+
+/* 선택 버튼 */
+.clause_btn {
+  float: right;
+  margin-right: 5px;
+  display: none;
+}
+.show_btn{
+  display: inline;
+}
+.clause_btn:hover {
+  background-color: rgb(196, 196, 196);
+}
+
+/* ====== 테이블 : 편집 버튼 ====== */
+.edit_btn {
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  float: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(145, 161, 36);
+}
+.edit_btn:hover {
+  background-color: rgb(196, 196, 196);
+}

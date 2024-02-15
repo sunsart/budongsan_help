@@ -1,0 +1,37 @@
+.dropbtn {
+  background-color: #333;  /* 메뉴 배경색 */
+  color: rgb(255, 255, 255); /* 메뉴 글자색 */
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #374d5d; /* 메뉴 호버링색 */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #a99292; /* 메뉴 배경색 */ 
+  min-width: 70px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+.show {display: block;}
