@@ -159,7 +159,7 @@ const mailOpt = (address, num) => {
     from: 'sunsartapp1@gmail.com',
     to: address,
     subject: '<부동산 도우미> 비밀번호 변경을 위한 6자리 코드번호 입니다',
-    text: "인증칸에 아래의 숫자를 입력해주세요. \n" + num
+    text: "인증칸에 아래의 숫자를 입력해주세요. \n\n" + num
   };
   return mailOptions;
 }

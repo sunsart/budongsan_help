@@ -47,9 +47,6 @@ $(document).ready(function(){
 			let btns = document.getElementsByClassName("clause_btn");
 			for(let btn of btns)
 				btn.className = "clause_btn show_btn";
-			//[추가] 버튼 비활성화
-			let add_btn = document.getElementById("add_button");
-			add_btn.style.visibility = 'hidden';
 			//체크박스 비활성화
 			let checkboxes = document.querySelectorAll(".checkbox");
 			for(let cb of checkboxes)
@@ -64,9 +61,6 @@ $(document).ready(function(){
 			let btns = document.getElementsByClassName("clause_btn");
 			for(let btn of btns)
 				btn.className = "clause_btn";
-			//[추가] 버튼 활성화
-			let add_btn = document.getElementById("add_button");
-			add_btn.style.visibility = 'visible';
 			//체크박스 활성화
 			let checkboxes = document.querySelectorAll(".checkbox");
 			for(let cb of checkboxes)
