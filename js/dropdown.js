@@ -8,6 +8,7 @@ function clickMenuBtn(id) {
   document.getElementById("shop-Dropdown").classList.remove("show");
   document.getElementById("factory-Dropdown").classList.remove("show");
   document.getElementById("land-Dropdown").classList.remove("show");
+  document.getElementById("etc-Dropdown").classList.remove("show");
 
   let temp = id + "-Dropdown";
   document.getElementById(temp).classList.toggle("show");

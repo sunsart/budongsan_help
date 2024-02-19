@@ -97,6 +97,8 @@ function setContentName(eng) {
 
   else if (eng == "land_trade") kor = "토지 매매 특약사항"
   else if (eng == "land_monthly") kor = "토지 월세 특약사항"
+
+  else if (eng == "etc") kor = "기타 특약사항"
   return kor;
 }
 

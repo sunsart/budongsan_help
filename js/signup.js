@@ -53,7 +53,7 @@ function checkSignup(){
 }
 
 function copyBasicsTable(num) {
-  let types = ["apt_trade", "apt_jeonse", "apt_monthly", "officetel_trade", "officetel_jeonse", "officetel_monthly", "dasedae_trade", "dasedae_jeonse", "dasedae_monthly", "dagagu_trade", "dagagu_jeonse", "dagagu_monthly", "oneroom_jeonse", "oneroom_monthly", "shop_trade", "shop_monthly", "factory_trade", "factory_monthly", "land_trade", "land_monthly"];
+  let types = ["apt_trade", "apt_jeonse", "apt_monthly", "officetel_trade", "officetel_jeonse", "officetel_monthly", "dasedae_trade", "dasedae_jeonse", "dasedae_monthly", "dagagu_trade", "dagagu_jeonse", "dagagu_monthly", "oneroom_jeonse", "oneroom_monthly", "shop_trade", "shop_monthly", "factory_trade", "factory_monthly", "land_trade", "land_monthly", "etc"];
   
   for(let i=0; i<types.length; i++) {
     $.ajax({
