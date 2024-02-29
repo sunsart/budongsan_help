@@ -26,16 +26,10 @@
 }
 /* ============================================= */
 
-
-/* ====== 네비게이션바 ======= */
+/* 네비게이션바 */
 .navbar {
   background-color: #333;
 }
-
-.navbar a {
-  color: white;
-}
-/* ========================== */
 
 #copyButton {
   border: none;
@@ -47,27 +41,3 @@
   background-color: #159256;
 }
 
-#login_text {
-  float: right;
-}
-
-/* ========= 건의하기 업데이트 소개 ============*/
-nav ul {
-  list-style-type: none;
-}
-nav ul li {
-  display: inline;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 10px;
-  padding-left: 10px;
-  float: right;
-}
-nav ul li:hover {
-  background-color: rgb(196, 196, 196);
-}
-nav ul li a {
-  color: black;
-  text-decoration: none;
-}
-/* =========================================== */

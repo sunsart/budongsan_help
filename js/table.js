@@ -30,10 +30,10 @@ $(document).ready(function(){
 		//2. Clipboard.js를 이용하여 선택한 특약내용을 clipboard에 카피하기
 		var clipboard = new ClipboardJS("#copyButton");
 		clipboard.on('success', function (e) {
-			console.log(e);
+			//console.log(e);
 		});
 		clipboard.on('error', function (e) {
-			console.log(e);
+			//console.log(e);
 		});
 	})
 });

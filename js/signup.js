@@ -54,15 +54,14 @@ function checkSignup(){
 
 function copyBasicsTable(num) {
   let types = ["apt_trade", "apt_jeonse", "apt_monthly", "officetel_trade", "officetel_jeonse", "officetel_monthly", "dasedae_trade", "dasedae_jeonse", "dasedae_monthly", "dagagu_trade", "dagagu_jeonse", "dagagu_monthly", "oneroom_jeonse", "oneroom_monthly", "shop_trade", "shop_monthly", "factory_trade", "factory_monthly", "land_trade", "land_monthly", "etc"];
-  
   for(let i=0; i<types.length; i++) {
     $.ajax({
       url : "/copyTable",
       type : "POST",
       data : {memberNum:num, type:types[i]},
       success : function(data) {
-        if(data == "테이블복사성공") 
-        console.log(types[i] + " 테이블 coyp완료!");
+        //if(data == "테이블복사성공") 
+        //console.log(types[i] + " 테이블 coyp완료!");
       }
     })
   }
@@ -79,3 +78,10 @@ $(document).ready(function() {
     xmlhttp.open("GET", "/policy.txt", true);
     xmlhttp.send();
 });
+
+function unregister() {
+  let answer = confirm("탈퇴 후 회원정보 및 서비스 이용기록은 모두 삭제됩니다. \n\n정말로 탈퇴하시겠습니까?")
+  if(answer == true) {
+    location.href='/unregister'
+  }
+}

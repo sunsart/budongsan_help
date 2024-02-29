@@ -19,7 +19,6 @@ function confirmModal() {
   window.location.href = '/';
 }
 
-
 //모달 내 취소버튼 클릭시
 function closeModal() { 
   let modal = document.getElementById("editModal");

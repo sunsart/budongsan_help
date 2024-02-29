@@ -17,7 +17,7 @@ let clauseType = "apt_trade";
 //
 router.get('/', function(req, res){
   if (req.session.user){
-    console.log("로그인 ㅇ /");
+    //console.log("로그인 ㅇ /");
     let sql = "SELECT * FROM " + clauseType + " WHERE account_id=?";
     let params = req.session.user.id;
     conn.query(sql, params, function(err, rows, fields){
@@ -25,7 +25,7 @@ router.get('/', function(req, res){
       res.render('index.ejs', {data:rows, user:req.session.user, type:setContentName(clauseType)});
     })
   } else {
-    console.log("로그인 X /");
+    //console.log("로그인 X /");
     let sql = "SELECT * FROM basics WHERE type=? AND title!=''";
     let params = [clauseType];
     conn.query(sql, params, function(err, rows){
@@ -39,7 +39,7 @@ router.get('/', function(req, res){
 router.get('/type/:id', function(req, res){
   clauseType = req.params.id; //선택된 테이블값 전역변수에 저장
   if (req.session.user){
-    console.log("로그인 ㅇ /tpye/:" + clauseType);
+    //console.log("로그인 ㅇ /tpye/:" + clauseType);
     let sql = "SELECT * FROM " + clauseType + " WHERE account_id=?";
     let params = req.session.user.id;
     conn.query(sql, params, function(err, rows, fields){
@@ -47,7 +47,7 @@ router.get('/type/:id', function(req, res){
       res.render('index.ejs', {data:rows, user:req.session.user, type:setContentName(clauseType)});
     })
   } else {
-    console.log("로그인 X /type/:"+ clauseType);
+    //console.log("로그인 X /type/:"+ clauseType);
     let sql = "SELECT * FROM basics WHERE type=? AND title!=''";
     let params = [clauseType];
     conn.query(sql, params, function(err, rows){

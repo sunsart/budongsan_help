@@ -7,12 +7,10 @@ function showFindId() {
   document.getElementById('findId_email').value = "";
 }
 
-
 //아이디찾기 창 닫기
 function closeFindId() { 
   document.querySelector(".background_findId").className = "background_findId";
 }
-
 
 //아이디찾기창 내 [아이디찾기] 버튼 클릭시 >> 휴효성검사 >> 결과표시
 function findId(){

@@ -2,8 +2,9 @@
 function confirmCode() {
   let codeNum = localStorage.getItem('codeNum');
   let memberNum = localStorage.getItem('memberNum');
-  console.log("코드넘버 확인 = " + codeNum);
-  console.log("회원 고유넘버 확인 = " + memberNum);
+  //console.log("코드넘버 확인 = " + codeNum);
+  //console.log("회원 고유넘버 확인 = " + memberNum);
+
   //입력코드 6자리 확인
   let sixcode = document.querySelector("#sixcode").value;
   if (sixcode.length != 6) {
@@ -17,13 +18,11 @@ function confirmCode() {
     alert("코드번호가 일치하지 않습니다");
 }
 
-
 //[취소] 버튼 클릭시 >> 창 닫기
 function closeEditpw() { 
   document.querySelector(".background_editpw").className = "background_editpw";
   foldWindow();  
 }
-
 
 //[비밀번호 변경] 버튼 클릭 >> 비번변경 + 얼럿창 + 창닫기
 function changePw() {
@@ -58,7 +57,6 @@ function changePw() {
   foldWindow();  
 }
 
-
 //editpw 초기화면으로 접기
 function foldWindow() {
   //코드넘버 확인부분 활성화
@@ -73,7 +71,6 @@ function foldWindow() {
   //입력내용 초기화
   resetInput(); 
 }
-
 
 //editpw 비밀번호재설정으로 펼치기
 function unfoldWindow() {

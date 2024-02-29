@@ -9,7 +9,6 @@ function showFindpw() {
   document.getElementById('findpw_email').value = "";        
 }
 
-
 //[취소] 버튼 클릭시 >> 창 닫기
 function closeFindpw() { 
   document.querySelector(".background_findpw").className = "background_findpw";
@@ -36,7 +35,7 @@ function findpw(){
         if(data == "비밀번호찾기실패") 
           alert("일치하는 정보를 찾을 수 없습니다");
         else {
-          alert(data.address + "의 주소로 6자리 숫자코드를 발송했습니다");
+          alert(data.address + "의 메일주소로 6자리 숫자코드를 발송했습니다");
           localStorage.setItem('codeNum', data.codeNum);
           localStorage.setItem('memberNum', data.memberNum);
           document.querySelector(".background_findpw").className = "background_findpw";

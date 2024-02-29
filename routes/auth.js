@@ -81,6 +81,37 @@ router.get('/logout', function(req, res){
   })
 })
 
+//-----회원탈퇴 라우터
+router.get('/unregister', function(req, res){
+  //회원정보 삭제
+  console.log("회원num : " + req.session.user.id);
+  let id = req.session.user.id;
+  let sql = "DELETE FROM account WHERE id=?";
+  conn.query(sql, [id], function(err, result) {
+    if(err) throw err;
+    console.log("회원정보 삭제완료!");
+  })
+
+  //회원특약 삭제
+  let types = ["apt_trade", "apt_jeonse", "apt_monthly", "officetel_trade", "officetel_jeonse", "officetel_monthly", "dasedae_trade", "dasedae_jeonse", "dasedae_monthly", "dagagu_trade", "dagagu_jeonse", "dagagu_monthly", "oneroom_jeonse", "oneroom_monthly", "shop_trade", "shop_monthly", "factory_trade", "factory_monthly", "land_trade", "land_monthly", "etc"];
+  for(let i=0; i<types.length; i++) {
+    let table = types[i];
+    let num = req.session.user.id; 
+    let sql = "DELETE FROM " + table + " WHERE account_id=?";
+    conn.query(sql, [num], function(err, result) {
+      if(err) throw err;
+      //console.log(types[i] + " 테이블 회원특약 삭제완료!");
+    })
+  }
+  console.log("회원특약 삭제완료!");
+
+  //세션 아웃
+  req.session.destroy(function(){
+    res.redirect('/');
+  })
+})
+
+
 //아이디 찾기 라우터
 router.post('/findID', function(req, res){
   let email = req.body.email;
