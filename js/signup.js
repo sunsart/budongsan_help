@@ -80,7 +80,7 @@ $(document).ready(function() {
 });
 
 function unregister() {
-  let answer = confirm("탈퇴 후 회원정보 및 서비스 이용기록은 모두 삭제됩니다. \n\n정말로 탈퇴하시겠습니까?")
+  let answer = confirm("\n탈퇴 후 회원정보 및 서비스 이용기록은 모두 삭제됩니다. \n\n정말로 탈퇴하시겠습니까?")
   if(answer == true) {
     location.href='/unregister'
   }
