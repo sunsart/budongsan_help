@@ -6,6 +6,7 @@ var mysql = require('mysql');
 var conn = mysql.createConnection({
   host: process.env.HOST,
   user: process.env.USER,
+  port: process.env.PORT,
   password: process.env.PASS,
   database: process.env.DATABASE
 });
